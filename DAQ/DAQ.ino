@@ -10,12 +10,14 @@
 
 #include "src/outputManager.h"
 #include "src/output/serialLogger.h"
+#include "src/output/sdLogger.h"
 
 sensorManager sm = sensorManager(1000);
 outputManager om = outputManager();
 testSensor* ts;
 testSensor* ts2;
 serialLogger* sl;
+sdLogger* sdl;
 
 void setup() {
     pinMode(13, OUTPUT);
@@ -26,7 +28,9 @@ void setup() {
     sm.registerSensor(ts2);
     sm.init();
     sl = new serialLogger(&om, 0, 9600);
+    sdl = new sdLogger(&om, 10);
     om.registerOutput(sl);
+    om.registerOutput(sdl);
     om.init();
 }
 

@@ -6,12 +6,16 @@
 
 class sdLogger : public output {
  private:
-    SDTHING _sd;
-    
+    String _fileName;
+    uint8_t _chipSelect;
+    File _dataFile;
+    String _buffer;
+
  public:
     sdLogger(outputManager* om, uint8_t chipSelect);
     void init();
     void update();
+    void dumpValues(uint8_t numValues);
 };
 
 #endif  // OUTPUT_SDLOGGER_H_
