@@ -8,7 +8,9 @@ sensorManager::sensorManager() {
 }
 
 void sensorManager::init() {
-
+    for (int i = 0; i < _numSensors; i++) {
+        _sensors[i]->init();
+    }
 }
 
 void sensorManager::update()

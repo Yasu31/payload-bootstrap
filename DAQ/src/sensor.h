@@ -3,9 +3,9 @@
 
 #include "debug.h"
 
-enum sensorState {OFF, STARTUP, READY, ERROR, SLEEP};
+enum sensorState {SENSOR_OFF, SENSOR_STARTUP, SENSOR_READY, SENSOR_ERROR, SENSOR_SLEEP};
 
-class sensor {
+class sensor {    
  protected:
     uint8_t _id;
     sensorState _state;
@@ -13,7 +13,7 @@ class sensor {
     double _value;
     bool _hasValue;
 
- public:
+ public: 
     sensor();
     virtual void init();  // Moves the sensor from OFF to STARTUP, and begins communication with any hardware
     virtual void update() = 0;

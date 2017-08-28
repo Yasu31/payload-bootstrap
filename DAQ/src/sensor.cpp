@@ -4,15 +4,15 @@
 #line __LINE__ "sensor.cpp"
 
 sensor::sensor() {
-    _state = OFF;
+    _state = SENSOR_OFF;
 }
 
 void sensor::init() {
-    _state = STARTUP;
+    _state = SENSOR_STARTUP;
 }
 
 void sensor::start() {
-    _state = READY;
+    _state = SENSOR_READY;
 }
 
 sensorState sensor::getState() {
