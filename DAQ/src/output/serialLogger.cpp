@@ -24,7 +24,7 @@ void serialLogger::init() {
             _serial = &Serial3;
             break;
     }
-    _serial->begin(_baudRate);
+    if (_port != 0) _serial->begin(_baudRate);
 }
 
 void serialLogger::update() {
@@ -35,14 +35,14 @@ void serialLogger::dumpValues(uint8_t numValues) {
     if (_port == 0) {
         for (uint8_t i = 0; i < numValues; i++) {
             Serial.print(_om->values[i]); 
-            if (i < numValues - 1) Serial.print(",");
+            if (i < numValues - 1) Serial.print(", ");
         }
         Serial.println("");
     }
     else {
         for (uint8_t i = 0; i < numValues; i++) {
             _serial->print(_om->values[i]); 
-            if (i < numValues - 1) _serial->print(",");
+            if (i < numValues - 1) _serial->print(", ");
         }
         _serial->println("");
     }

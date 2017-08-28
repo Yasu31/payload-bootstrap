@@ -14,7 +14,6 @@ void outputManager::init() {
 }
 
 void outputManager::update() {
-    Serial.println("UPDATE MANAGER");
 }
 
 uint8_t outputManager::registerOutput(output* newOutput) {
@@ -23,6 +22,7 @@ uint8_t outputManager::registerOutput(output* newOutput) {
         _numOutputs++;
         return _numOutputs;
     }
+    return 33;
 }
 
 void outputManager::dumpValues(uint8_t numValues) {

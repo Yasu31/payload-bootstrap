@@ -3,14 +3,16 @@
 
 #line __LINE__ "sensorManager.cpp"
 
-sensorManager::sensorManager() {
+sensorManager::sensorManager(uint32_t interval) {
     _numSensors = 0;
+    _interval = interval;
 }
 
 void sensorManager::init() {
     for (int i = 0; i < _numSensors; i++) {
         _sensors[i]->init();
     }
+    _intervalStarted = millis();
 }
 
 void sensorManager::update()
@@ -20,7 +22,7 @@ void sensorManager::update()
     }
     for (int i = 0; i < _numSensors; i++) {
         if (_sensors[i]->getValueReady()) {
-            _values[i] = _sensors[i]->getValue();
+            values[i] = _sensors[i]->getValue();
         }
     }
 }
@@ -31,6 +33,19 @@ uint8_t sensorManager::registerSensor(sensor* newSensor) {
         _numSensors++;
         return _numSensors;
     }
+    return 33;
+}
+
+uint8_t sensorManager::getNumSensors() {
+    return _numSensors;
+}
+
+bool sensorManager::getValuesReady() {
+    if (millis() - _intervalStarted >= _interval) {
+        _intervalStarted = millis();
+        return true;
+    }
+    return false;
 }
 
 void sensorManager::startSensor(uint8_t id)

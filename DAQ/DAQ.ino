@@ -11,10 +11,11 @@
 #include "src/outputManager.h"
 #include "src/output/serialLogger.h"
 
-sensorManager sm = sensorManager();
+sensorManager sm = sensorManager(1000);
 outputManager om = outputManager();
 testSensor* ts;
 testSensor* ts2;
+serialLogger* sl;
 
 void setup() {
     pinMode(13, OUTPUT);
@@ -24,10 +25,18 @@ void setup() {
     sm.registerSensor(ts);
     sm.registerSensor(ts2);
     sm.init();
-    serialLogger* sl = new serialLogger(&om, 0, 9600);
+    sl = new serialLogger(&om, 0, 9600);
+    om.registerOutput(sl);
+    om.init();
 }
 
 void loop() {
     sm.update();
     om.update();
+    delay(10);
+    if(sm.getValuesReady()) {
+        uint8_t num = sm.getNumSensors();
+        memcpy(&om.values, &sm.values, sizeof(double) * num);
+        om.dumpValues(num);
+    }
 }

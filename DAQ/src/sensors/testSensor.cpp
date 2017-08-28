@@ -20,11 +20,11 @@ void testSensor::init() {
 void testSensor::update() {
     if (_state == SENSOR_STARTUP) {
         if (millis() - _startTime > _startupTime) {
-            Serial.println("Sensor done");
+            //Serial.println("Sensor done");
             _state = SENSOR_READY;
         }
         else {
-            Serial.print("Waiting for sensor "); Serial.println(_startupTime);
+            //Serial.print("Waiting for sensor "); Serial.println(_startupTime);
         }
     }
     if (_state == SENSOR_READY) {
