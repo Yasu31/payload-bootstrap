@@ -18,7 +18,7 @@ class output {
     explicit output(outputManager* om);
     virtual void init();  // Moves the output device from OFF to STARTUP, and begins communication with any hardware
     virtual void update() = 0;
-    virtual void dumpValues(uint8_t numValues) = 0;
+    virtual void dumpValues(uint32_t time, uint8_t numValues) = 0;
     outputState getState();
     
     void start();

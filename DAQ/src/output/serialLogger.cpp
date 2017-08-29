@@ -32,8 +32,9 @@ void serialLogger::update() {
 
 }
 
-void serialLogger::dumpValues(uint8_t numValues) {
+void serialLogger::dumpValues(uint32_t time, uint8_t numValues) {
     if (_port == 0) {
+        Serial.print(String(time, DEC) + ": ");
         for (uint8_t i = 0; i < numValues; i++) {
             Serial.print(_om->values[i]); 
             if (i < numValues - 1) Serial.print(", ");
@@ -41,6 +42,7 @@ void serialLogger::dumpValues(uint8_t numValues) {
         Serial.println("");
     }
     else {
+        _serial->print(String(time, DEC) + ": ");
         for (uint8_t i = 0; i < numValues; i++) {
             _serial->print(_om->values[i]); 
             if (i < numValues - 1) _serial->print(", ");

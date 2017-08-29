@@ -41,7 +41,8 @@ void sdLogger::init() {
 void sdLogger::update() {
 }
 
-void sdLogger::dumpValues(uint8_t numValues) {
+void sdLogger::dumpValues(uint32_t time, uint8_t numValues) {
+    _buffer = String(time, DEC) + ": ";
     for (uint8_t i = 0; i < numValues; i++) {
         _buffer += String(_om->values[i]); 
         if (i < numValues - 1) _buffer += ", ";
@@ -50,5 +51,4 @@ void sdLogger::dumpValues(uint8_t numValues) {
     _dataFile = SD.open(_fileName.c_str(), FILE_WRITE);
     _dataFile.print(_buffer);
     _dataFile.close();
-    _buffer = "";
 }

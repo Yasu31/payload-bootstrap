@@ -22,7 +22,7 @@ class outputManager {
     
     uint8_t registerOutput(output* newOutput);
     
-    void dumpValues(uint8_t numValues);
+    void dumpValues(uint32_t time, uint8_t numValues);
     
     void startOutput(uint8_t id);
 };

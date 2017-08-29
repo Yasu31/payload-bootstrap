@@ -22,7 +22,9 @@ class daq {
     daq();
     void init();
     void update();
-
+    
+    void start();
+    void stop();
 };
 
 #endif  // daq_H_

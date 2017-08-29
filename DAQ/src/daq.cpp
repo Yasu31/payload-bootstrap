@@ -30,6 +30,15 @@ void daq::update() {
     if(_sm.getValuesReady()) {
         uint8_t num = _sm.getNumSensors();
         memcpy(&_om.values, &_sm.values, sizeof(double) * num);
-        _om.dumpValues(num);
+        _om.dumpValues(millis(), num);
     }
+}
+
+void daq::start() {
+    //_om.start();
+    //_sm.start();
+}
+
+void daq::stop() {
+
 }

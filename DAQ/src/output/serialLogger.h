@@ -13,7 +13,7 @@ class serialLogger : public output {
     explicit serialLogger(outputManager* om, uint8_t port, uint16_t baudRate);
     void init();
     void update();
-    void dumpValues(uint8_t numValues);
+    void dumpValues(uint32_t time, uint8_t numValues);
 };
 
 #endif  // OUTPUT_SERIALLOGGER_H_

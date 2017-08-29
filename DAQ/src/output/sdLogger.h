@@ -15,7 +15,7 @@ class sdLogger : public output {
     sdLogger(outputManager* om, uint8_t chipSelect);
     void init();
     void update();
-    void dumpValues(uint8_t numValues);
+    void dumpValues(uint32_t time, uint8_t numValues);
 };
 
 #endif  // OUTPUT_SDLOGGER_H_

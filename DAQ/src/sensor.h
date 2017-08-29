@@ -3,6 +3,8 @@
 
 #include "debug.h"
 
+// Sensor lifecycle: Off: Construction. Startup: init until enough loops for the sensor to be ready. Ready: Sensor is sending values
+
 enum sensorState {SENSOR_OFF, SENSOR_STARTUP, SENSOR_READY, SENSOR_ERROR, SENSOR_SLEEP};
 
 class sensor {    

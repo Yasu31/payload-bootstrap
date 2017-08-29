@@ -27,3 +27,7 @@ double sensor::getValue() {
     _hasValue = false;
     return _value;
 }
+
+void sensor::start() {
+    if (_state == SENSOR_SLEEP) _state = 
+}
