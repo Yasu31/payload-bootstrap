@@ -27,7 +27,7 @@ uint8_t outputManager::registerOutput(output* newOutput) {
 
 void outputManager::dumpValues(uint8_t numValues) {
     for (int i = 0; i < _numOutputs; i++) {
-        _outputs[i]->dumpValues(numValues);
+        if (_outputs[i]->getState() == OUTPUT_READY) _outputs[i]->dumpValues(numValues);
     }
 }
 

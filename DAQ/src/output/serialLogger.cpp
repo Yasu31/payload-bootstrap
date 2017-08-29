@@ -25,6 +25,7 @@ void serialLogger::init() {
             break;
     }
     if (_port != 0) _serial->begin(_baudRate);
+    _state = OUTPUT_READY;
 }
 
 void serialLogger::update() {

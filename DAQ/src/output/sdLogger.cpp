@@ -35,6 +35,7 @@ void sdLogger::init() {
         logNumberFile.write("0");
         logNumberFile.close();
     }
+    _state = OUTPUT_READY;
 }
 
 void sdLogger::update() {
