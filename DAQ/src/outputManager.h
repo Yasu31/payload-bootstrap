@@ -19,6 +19,7 @@ class outputManager {
     
     double values[MAX_OUTPUTS];
 
+    void start();
     
     uint8_t registerOutput(output* newOutput);
     

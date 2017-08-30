@@ -16,6 +16,7 @@ class sensorManager {
     sensorManager(uint32_t interval);
     void init();
     void update();
+    void start();
     
     uint8_t registerSensor(sensor* newSensor);
     uint8_t getNumSensors();

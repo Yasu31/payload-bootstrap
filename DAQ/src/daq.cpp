@@ -3,8 +3,8 @@
 
 #line __LINE__ "daq.cpp"
 
-daq::daq() : _sm(sensorManager(1000)), _om(outputManager())
-{
+daq::daq() : _sm(sensorManager(1000)), _om(outputManager()) {
+    _started = false;
 }
 
 void daq::init() {
@@ -26,17 +26,23 @@ void daq::init() {
 void daq::update() {
     _sm.update();
     _om.update();
-    delay(10);
-    if(_sm.getValuesReady()) {
-        uint8_t num = _sm.getNumSensors();
-        memcpy(&_om.values, &_sm.values, sizeof(double) * num);
-        _om.dumpValues(millis(), num);
+    if (_started) {
+        delay(10);
+        if(_sm.getValuesReady()) {
+            uint8_t num = _sm.getNumSensors();
+            memcpy(&_om.values, &_sm.values, sizeof(double) * num);
+            _om.dumpValues(millis() - _startTime, num);
+        }
     }
 }
 
 void daq::start() {
-    //_om.start();
-    //_sm.start();
+    if (!_started) {
+        _om.start();
+        _sm.start();
+        _startTime = millis();
+        _started = true;
+    }
 }
 
 void daq::stop() {

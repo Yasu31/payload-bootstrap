@@ -17,6 +17,9 @@ class daq {
     testSensor* _ts2;
     serialLogger* _sl;
     sdLogger* _sdl;
+    
+    bool _started;
+    uint32_t _startTime;
 
  public:
     daq();

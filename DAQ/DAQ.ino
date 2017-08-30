@@ -13,4 +13,7 @@ void setup() {
 
 void loop() {
     DAQ.update();
+    if (Serial.available() > 0) {
+        DAQ.start();
+    }
 }

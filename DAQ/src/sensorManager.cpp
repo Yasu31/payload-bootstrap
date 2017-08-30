@@ -27,6 +27,12 @@ void sensorManager::update()
     }
 }
 
+void sensorManager::start() {
+    for (int i = 0; i < _numSensors; i++) {
+        startSensor(i);
+    }
+}
+
 uint8_t sensorManager::registerSensor(sensor* newSensor) {
     if (_numSensors < MAX_SENSORS - 1) {
         _sensors[_numSensors] = newSensor;

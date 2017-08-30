@@ -11,10 +11,6 @@ void sensor::init() {
     _state = SENSOR_STARTUP;
 }
 
-void sensor::start() {
-    _state = SENSOR_READY;
-}
-
 sensorState sensor::getState() {
     return _state;
 }
@@ -29,5 +25,5 @@ double sensor::getValue() {
 }
 
 void sensor::start() {
-    if (_state == SENSOR_SLEEP) _state = 
+    if (_state == SENSOR_SLEEP) _state = SENSOR_READY;
 }

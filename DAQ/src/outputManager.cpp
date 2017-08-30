@@ -16,6 +16,9 @@ void outputManager::init() {
 void outputManager::update() {
 }
 
+void outputManager::start() {
+}
+
 uint8_t outputManager::registerOutput(output* newOutput) {
     if (_numOutputs < MAX_OUTPUTS - 1) {
         _outputs[_numOutputs] = newOutput;

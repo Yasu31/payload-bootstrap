@@ -21,7 +21,7 @@ void testSensor::update() {
     if (_state == SENSOR_STARTUP) {
         if (millis() - _startTime > _startupTime) {
             //Serial.println("Sensor done");
-            _state = SENSOR_READY;
+            _state = SENSOR_SLEEP;
         }
         else {
             //Serial.print("Waiting for sensor "); Serial.println(_startupTime);
