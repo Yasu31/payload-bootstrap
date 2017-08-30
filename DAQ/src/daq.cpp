@@ -10,8 +10,10 @@ daq::daq() : _sm(sensorManager(1000)), _om(outputManager()) {
 void daq::init() {
     _ts = new testSensor(1000, 100);
     _ts2 = new testSensor(2000, 200);
+    _pt = new pTap();
     _sm.registerSensor(_ts);
     _sm.registerSensor(_ts2);
+    _sm.registerSensor(_pt);
     
     _sm.init();
     

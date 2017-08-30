@@ -1,5 +1,3 @@
-#include <i2c_t3.h>// for some reason including wire in the library doesn't work, so do it here
-
 #include <SD.h>
 #include "Arduino.h"
 
