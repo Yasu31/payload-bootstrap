@@ -2,7 +2,8 @@
     #define SENSORS_PTAP_H_
 
 #include "../sensor.h"
-#include <Adafruit_ADS1015.h>
+
+class Adafruit_ADS1115;
 
 class pTap : public sensor {
  private:
@@ -12,7 +13,7 @@ class pTap : public sensor {
     uint32_t _startupTime;
     
  public:
-    pTap();
+    pTap(uint8_t address);
     void init();
     void update();
 };

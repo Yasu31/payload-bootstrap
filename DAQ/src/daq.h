@@ -4,6 +4,7 @@
 #include "sensorManager.h"
 #include "sensors/testSensor.h"
 #include "sensors/pTap.h"
+#include "sensors/loadCell.h"
 
 #include "outputManager.h"
 #include "output/serialLogger.h"
@@ -16,7 +17,7 @@ class daq {
     
     testSensor* _ts;
     testSensor* _ts2;
-    pTap* _pt;
+    loadCell* _lc;
     serialLogger* _sl;
     sdLogger* _sdl;
     
