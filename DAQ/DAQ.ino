@@ -11,7 +11,7 @@ void setup() {
 
 void loop() {
     DAQ.update();
-    if (Serial.available() > 0) {
+    if (millis() > 5000) {
         DAQ.start();
     }
 }

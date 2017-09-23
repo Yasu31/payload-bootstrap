@@ -3,17 +3,15 @@
 
 #line __LINE__ "daq.cpp"
 
-daq::daq() : _sm(sensorManager(1000)), _om(outputManager()) {
+daq::daq() : _sm(sensorManager(100)), _om(outputManager()) {
     _started = false;
 }
 
 void daq::init() {
-    _ts = new testSensor(1000, 100);
-    _ts2 = new testSensor(2000, 200);
-    _lc = new loadCell(0x48, 20.96);
-    _sm.registerSensor(_ts);
-    _sm.registerSensor(_ts2);
+    _lc = new loadCell(0x48, 0.04426);
+    _pt = new loadCell(0x49, 10.74);
     _sm.registerSensor(_lc);
+    _sm.registerSensor(_pt);
     
     _sm.init();
     

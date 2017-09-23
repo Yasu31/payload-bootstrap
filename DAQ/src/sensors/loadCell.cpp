@@ -19,6 +19,7 @@ loadCell::loadCell(uint8_t address, double rate) : sensor(), _amp(Adafruit_ADS11
 void loadCell::init() {
     sensor::init();
     _amp.begin();
+    _amp.setGain(GAIN_SIXTEEN);
 }
 
 void loadCell::update() {

@@ -15,8 +15,7 @@ class daq {
     sensorManager _sm;
     outputManager _om;
     
-    testSensor* _ts;
-    testSensor* _ts2;
+    loadCell* _pt;
     loadCell* _lc;
     serialLogger* _sl;
     sdLogger* _sdl;
