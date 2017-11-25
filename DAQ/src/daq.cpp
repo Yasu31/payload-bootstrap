@@ -9,7 +9,7 @@ daq::daq() : _sm(sensorManager(100)), _om(outputManager()) {
 
 void daq::init() {
     _lc = new loadCell(0x48, 0.04426);
-    _pt = new loadCell(0x49, 10.74);
+    _pt = new loadCell(0x49, 11.54);
     _sm.registerSensor(_lc);
     _sm.registerSensor(_pt);
     
