@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 
 datapoints = []
 
-f = open("#4.txt", "r")
+f = open("#5.txt", "r")
 raw = f.readlines()
 
 
@@ -26,8 +26,8 @@ for tid in range(0, len(t)):
     t[tid] -= start
 
 total_imp = 0
-for force in f:
-    total_imp += force * 0.1
+for n, force in enumerate(f):
+    total_imp += force * (t[n] - t[n-1])
     
 print("Designation: "+chr(int(math.log(total_imp / 2.5, 2) + 66))+str(int(sum(f)/len(f))))
 print("Total impulse: "+str(total_imp)+ " Ns")
