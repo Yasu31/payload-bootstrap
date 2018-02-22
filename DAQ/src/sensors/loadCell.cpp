@@ -5,7 +5,7 @@
 
 loadCell::loadCell(uint8_t address, double rate) : sensor(), _amp(Adafruit_ADS1115(address)) {
     _value = 0;
-    _interval = 100;
+    _interval = 25;
     
     _lastReading = 0;
     _startTime = 0;

@@ -3,7 +3,7 @@
 
 #line __LINE__ "daq.cpp"
 
-daq::daq() : _sm(sensorManager(100)), _om(outputManager()) {
+daq::daq() : _sm(sensorManager(20)), _om(outputManager()) {
     _started = false;
 }
 
