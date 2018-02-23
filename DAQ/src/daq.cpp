@@ -10,8 +10,10 @@ daq::daq() : _sm(sensorManager(20)), _om(outputManager()) {
 void daq::init() {
     _lc = new loadCell(0x48, 0.04426);
     _pt = new loadCell(0x49, 11.54);
+    _tc = new thermocouple(3, 4, 5, 1.0);
     _sm.registerSensor(_lc);
     _sm.registerSensor(_pt);
+    _sm.registerSensor(_tc);
     
     _sm.init();
     

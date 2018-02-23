@@ -5,6 +5,7 @@
 #include "sensors/testSensor.h"
 #include "sensors/pTap.h"
 #include "sensors/loadCell.h"
+#include "sensors/thermocouple.h"
 
 #include "outputManager.h"
 #include "output/serialLogger.h"
@@ -17,6 +18,7 @@ class daq {
     
     loadCell* _pt;
     loadCell* _lc;
+    thermocouple* _tc;
     serialLogger* _sl;
     sdLogger* _sdl;
     

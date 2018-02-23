@@ -3,6 +3,7 @@
 
 #include "debug.h"
 #include <Adafruit_ADS1015.h>
+#include <Adafruit_MAX31855.h>
 
 // Sensor lifecycle: Off: Construction. Startup: init until enough loops for the sensor to be ready. Ready: Sensor is sending values
 
