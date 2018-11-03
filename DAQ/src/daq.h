@@ -16,7 +16,7 @@ class daq {
     sensorManager _sm;
     outputManager _om;
     
-    loadCell* _pt;
+    pTap* _pt;
     loadCell* _lc;
     thermocouple* _tc;
     serialLogger* _sl;

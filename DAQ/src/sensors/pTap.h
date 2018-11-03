@@ -11,9 +11,13 @@ class pTap : public sensor {
     uint32_t _lastReading;
     uint32_t _startTime;
     uint32_t _startupTime;
+
+    double _zeroVal;
+    uint16_t _avgCount;
+    double _rate;
     
  public:
-    pTap(uint8_t address);
+    pTap(uint8_t address, double rate);
     void init();
     void update();
 };
