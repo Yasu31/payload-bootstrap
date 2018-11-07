@@ -15,19 +15,18 @@ void sensorManager::init() {
     _intervalStarted = millis();
 }
 
-void sensorManager::update()
-{
+void sensorManager::update() {
     for (int i = 0; i < _numSensors; i++) {
         _sensors[i]->update();
     }
-    int j=0;
+    int j = 0;
     for (int i = 0; i < _numSensors; i++) {
         if (_sensors[i]->getValueReady()) {
-          for(int k=0; k< _sensors[i]->_channels; k++){
-            //todo: record TIME (nanoseconds?) of measurement as well
-            values[j] = _sensors[i]->getValue(k);
-            j++;
-          }
+            for (int k = 0; k < _sensors[i]->_channels; k++) {
+                //todo: record TIME (nanoseconds?) of measurement as well
+                values[j] = _sensors[i]->getValue(k);
+                j++;
+            }
         }
     }
 }
@@ -38,10 +37,10 @@ void sensorManager::start() {
     }
 }
 
-uint8_t sensorManager::registerSensor(sensor* newSensor) {
-  if (_numSensors < (MAX_SENSORS - newSensor->_channels)) {
+uint8_t sensorManager::registerSensor(sensor *newSensor) {
+    if (_numSensors < (MAX_SENSORS - newSensor->_channels)) {
         _sensors[_numSensors] = newSensor;
-        _numSensors+=newSensor->_channels;
+        _numSensors += newSensor->_channels;
         return _numSensors;
     }
     return 33;
@@ -59,7 +58,6 @@ bool sensorManager::getValuesReady() {
     return false;
 }
 
-void sensorManager::startSensor(uint8_t id)
-{
+void sensorManager::startSensor(uint8_t id) {
     if (id < MAX_SENSORS) _sensors[id]->start();
 }

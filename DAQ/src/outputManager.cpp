@@ -19,7 +19,7 @@ void outputManager::update() {
 void outputManager::start() {
 }
 
-uint8_t outputManager::registerOutput(output* newOutput) {
+uint8_t outputManager::registerOutput(output *newOutput) {
     if (_numOutputs < MAX_OUTPUTS - 1) {
         _outputs[_numOutputs] = newOutput;
         _numOutputs++;
@@ -34,7 +34,6 @@ void outputManager::dumpValues(uint32_t time, uint8_t numValues) {
     }
 }
 
-void outputManager::startOutput(uint8_t id)
-{
+void outputManager::startOutput(uint8_t id) {
     if (id < MAX_OUTPUTS) _outputs[id]->start();
 }
