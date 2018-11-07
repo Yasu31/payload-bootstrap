@@ -2,8 +2,8 @@
     #define SENSOR_H_
 
 #include "debug.h"
-#include <Adafruit_ADS1015.h>
-#include <Adafruit_MAX31855.h>
+//#include <Adafruit_ADS1015.h>
+//#include <Adafruit_MAX31855.h>
 
 // Sensor lifecycle: Off: Construction. Startup: init until enough loops for the sensor to be ready. Ready: Sensor is sending values
 
@@ -14,18 +14,19 @@ class sensor {
     uint8_t _id;
     sensorState _state;
     uint32_t _interval;
-    double _value;
+    void* _values;
     bool _hasValue;
 
  public: 
     sensor();
-    virtual void init();  // Moves the sensor from OFF to STARTUP, and begins communication with any hardware
+    virtual void init(uint8_t);  // Moves the sensor from OFF to STARTUP, and begins communication with any hardware
+    virtual void init();
     virtual void update() = 0;
     sensorState getState();
     bool getValueReady();
-    double getValue();
-    
+    double getValue(uint8_t);
     void start();
+    uint8_t _channels;
 };
 
 #endif  // SENSOR_H_

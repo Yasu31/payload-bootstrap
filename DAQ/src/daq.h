@@ -3,22 +3,22 @@
 
 #include "sensorManager.h"
 #include "sensors/testSensor.h"
-#include "sensors/pTap.h"
-#include "sensors/loadCell.h"
-#include "sensors/thermocouple.h"
+#include "sensors/ADS7950.h"
 
 #include "outputManager.h"
 #include "output/serialLogger.h"
 #include "output/sdLogger.h"
 
 class daq {
+  // topmost class for the DAQ. Provides easy interface that the Arduino code can call.
  private:
-    sensorManager _sm;
-    outputManager _om;
-    
-    pTap* _pt;
-    loadCell* _lc;
-    thermocouple* _tc;
+    sensorManager _sm; // sensorManager consolidates all sensors
+    outputManager _om; // oututManager consolidates all output methods (serial and SD card)
+
+    // declare sensors
+    ads7950* _ads7950; // class representing ADC (inherits from sensor class)
+
+    // declare outputs
     serialLogger* _sl;
     sdLogger* _sdl;
     
@@ -27,8 +27,8 @@ class daq {
 
  public:
     daq();
-    void init();
-    void update();
+    void init(); //initiate code
+    void update(); //call to get value from sensors and write to outputs
     
     void start();
     void stop();

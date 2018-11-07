@@ -20,9 +20,14 @@ void sensorManager::update()
     for (int i = 0; i < _numSensors; i++) {
         _sensors[i]->update();
     }
+    int j=0;
     for (int i = 0; i < _numSensors; i++) {
         if (_sensors[i]->getValueReady()) {
-            values[i] = _sensors[i]->getValue();
+          for(int k=0; k< _sensors[i]->_channels; k++){
+            //todo: record TIME (nanoseconds?) of measurement as well
+            values[j] = _sensors[i]->getValue(k);
+            j++;
+          }
         }
     }
 }
@@ -34,9 +39,9 @@ void sensorManager::start() {
 }
 
 uint8_t sensorManager::registerSensor(sensor* newSensor) {
-    if (_numSensors < MAX_SENSORS - 1) {
+  if (_numSensors < (MAX_SENSORS - newSensor->_channels)) {
         _sensors[_numSensors] = newSensor;
-        _numSensors++;
+        _numSensors+=newSensor->_channels;
         return _numSensors;
     }
     return 33;

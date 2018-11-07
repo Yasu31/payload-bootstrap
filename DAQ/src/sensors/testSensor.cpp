@@ -7,13 +7,12 @@ testSensor::testSensor(uint32_t startupTime, uint32_t interval) :
     sensor() {
     _interval = interval;
     _lastReading = 0;
-    _value = 0;
     _startTime = 0;
     _startupTime = startupTime;
 }
 
 void testSensor::init() {
-    sensor::init();
+    sensor::init(1);
     _startTime = millis();
 }
 
@@ -29,7 +28,7 @@ void testSensor::update() {
     }
     if (_state == SENSOR_READY) {
         if (millis() - _lastReading > _interval) {
-            _value = _lastReading;
+          //_value = _lastReading;
             _lastReading = millis();
             _hasValue = true;
         }

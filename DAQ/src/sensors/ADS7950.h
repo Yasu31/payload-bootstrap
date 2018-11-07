@@ -1,25 +1,25 @@
-#ifndef SENSORS_PTAP_H_
-    #define SENSORS_PTAP_H_
+#ifndef SENSORS_ADS7950_H_
+    #define SENSORS_ADS7950_H_
 
 #include "../sensor.h"
+#include <SPI.h>
 
-class Adafruit_ADS1115;
-
-class pTap : public sensor {
+class ads7950 : public sensor {
  private:
-    Adafruit_ADS1115 _amp;
     uint32_t _lastReading;
     uint32_t _startTime;
     uint32_t _startupTime;
-
+    
     double _zeroVal;
     uint16_t _avgCount;
     double _rate;
+
+    uint16_t spi_data;
     
  public:
-    pTap(uint8_t address, double rate);
+    ads7950();
     void init();
     void update();
 };
 
-#endif  // SENSORS_PTAP_H_
+#endif  // SENSORS_ADS7950_H_
