@@ -17,7 +17,7 @@ void sensor::init(uint8_t channels) {
 }
 
 void sensor::init() {
-
+  init(1);
 }
 
 sensorState sensor::getState() {

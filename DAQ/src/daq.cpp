@@ -21,6 +21,8 @@ void daq::init() {
     _om.init();
 }
 
+// this is probably a bit slow if we want to sample at 20kHz...
+
 void daq::update() {
     _sm.update();
     _om.update();

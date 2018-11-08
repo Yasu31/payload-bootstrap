@@ -4,11 +4,15 @@
 #include "../sensor.h"
 
 class testSensor : public sensor {
+  /*
+  sample code for creating a new sensor.
+  */
  private:
     uint32_t _lastReading;
     uint32_t _startTime;
     uint32_t _startupTime;
-    
+
+
  public:
     testSensor(uint32_t startupTime, uint32_t interval);
     void init();

@@ -23,7 +23,6 @@ void sensorManager::update() {
     for (int i = 0; i < _numSensors; i++) {
         if (_sensors[i]->getValueReady()) {
             for (int k = 0; k < _sensors[i]->_channels; k++) {
-                //todo: record TIME (nanoseconds?) of measurement as well
                 values[j] = _sensors[i]->getValue(k);
                 j++;
             }

@@ -17,12 +17,13 @@ protected:
     sensorState _state;
     uint32_t _interval;
     void *_values;
-    bool _hasValue;
+    bool _hasValue; // used to indicate that the sensor has new data ready
+
 
 public:
     sensor();
 
-    virtual void init(uint8_t);  // Moves the sensor from OFF to STARTUP, and begins communication with any hardware
+    virtual void init(uint8_t);  // Moves the sensor from OFF to STARTUP, and begins communication with any hardware. Set the number of channels that this sensor uses.
     virtual void init();
 
     virtual void update() = 0;
@@ -35,7 +36,9 @@ public:
 
     void start();
 
-    uint8_t _channels;
+    uint8_t _channels; // how many channels of data this sensor has.
+
+
 };
 
 #endif  // SENSOR_H_

@@ -12,7 +12,7 @@ testSensor::testSensor(uint32_t startupTime, uint32_t interval) :
 }
 
 void testSensor::init() {
-    sensor::init(1);
+    sensor::init(1); // set up single channel sensor
     _startTime = millis();
 }
 
